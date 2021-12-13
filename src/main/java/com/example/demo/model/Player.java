@@ -1,21 +1,31 @@
-package com.example.demo;
+package com.example.demo.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.math.BigInteger;
+
+@Document(collection = "players")
 public class Player {
-    public int id;
+
+    @Id
+    public String id;
+
+    public String codePlayer;
     public String name;
-    public int age;
+    public Integer age;
     public String icon;
     public String national;
-    public int winners;
-    public int games;
+    public Integer winners;
+    public Integer games;
     public String club;
 
     public Player(){
 
     }
 
-    public Player(int id, String name, int age, String icon, String national, int winners, int games, String club) {
-        this.id = id;
+    public Player(String codePlayer, String name, Integer age, String icon, String national, Integer winners, Integer games, String club) {
+        this.codePlayer = codePlayer;
         this.name = name;
         this.age = age;
         this.icon = icon;
@@ -25,12 +35,20 @@ public class Player {
         this.club = club;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCodePlayer() {
+        return codePlayer;
+    }
+
+    public void setCodePlayer(String codePlayer) {
+        this.codePlayer = codePlayer;
     }
 
     public String getName() {
@@ -41,11 +59,11 @@ public class Player {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -65,19 +83,19 @@ public class Player {
         this.national = national;
     }
 
-    public int getWinners() {
+    public Integer getWinners() {
         return winners;
     }
 
-    public void setWinners(int winners) {
+    public void setWinners(Integer winners) {
         this.winners = winners;
     }
 
-    public int getGames() {
+    public Integer getGames() {
         return games;
     }
 
-    public void setGames(int games) {
+    public void setGames(Integer games) {
         this.games = games;
     }
 
@@ -89,3 +107,5 @@ public class Player {
         this.club = club;
     }
 }
+
+
