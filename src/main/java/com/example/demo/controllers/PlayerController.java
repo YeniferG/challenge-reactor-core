@@ -5,6 +5,7 @@ import com.example.demo.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -27,5 +28,14 @@ public class PlayerController {
     @GetMapping("/players-functional")
     public List<Player> getPlayersFunctional(){return playerService.getPlayersFunctional();}
 
+    @GetMapping("/filter/{club}")
+    public Flux<Player> getPlayerAgeMore34(@PathVariable("club") String club){
+        return playerService.filterByAgeGreaterThan34AndClub(club);
+    }
+
+    @GetMapping("/nationality")
+    public Flux<List<Player>> checkNationality(){
+        return playerService.getRankingPlayer();
+    }
 
 }

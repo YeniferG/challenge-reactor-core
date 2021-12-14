@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.math.BigInteger;
 
 @Document(collection = "players")
-public class Player {
+public class Player implements Comparable<Player>{
 
     @Id
     public String id;
@@ -105,6 +105,13 @@ public class Player {
 
     public void setClub(String club) {
         this.club = club;
+    }
+
+    @Override
+    public int compareTo(Player o) {
+        if((o.getWinners() - o.getGames())<0) return -1;
+        else if((o.getWinners() - o.getGames()) == o.getWinners()) return 0;
+        else  return 1;
     }
 }
 
